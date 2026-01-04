@@ -10,13 +10,38 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
+
+// Normalize frontend URL (remove trailing slash for CORS matching)
+const normalizeOrigin = (url) => {
+  if (!url) return "http://localhost:3000";
+  return url.replace(/\/$/, ''); // Remove trailing slash
+};
+
+const frontendOrigin = normalizeOrigin(process.env.FRONTEND_URL);
+
 const io = socketIo(server, {
-  cors: { origin: process.env.FRONTEND_URL || "http://localhost:3000" }
+  cors: { origin: frontendOrigin }
 });
 
 // Middlewares
 app.use(helmet());
-app.use(cors({ origin: process.env.FRONTEND_URL || "http://localhost:3000", credentials: true }));
+app.use(cors({ 
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Normalize the origin (remove trailing slash)
+    const normalizedOrigin = origin.replace(/\/$/, '');
+    
+    // Check if normalized origin matches
+    if (normalizedOrigin === frontendOrigin || normalizedOrigin === 'http://localhost:3000') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true 
+}));
 app.use(express.json({ limit: '10mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/', rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
