@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  ArrowLeft, MapPin, Clock, Package, CheckCircle, XCircle, 
-  User, Users, Check, X, Truck, Award
+  ArrowLeft, MapPin, Clock, Package, CheckCircle, 
+  User, Users, Check, Truck, Award
 } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';

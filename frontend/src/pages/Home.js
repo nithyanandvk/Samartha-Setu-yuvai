@@ -22,6 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchGlobalStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchGlobalStats = async () => {

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  AlertTriangle, MapPin, Calendar, Users, Package, 
-  PlusCircle, Filter, Search, TrendingUp
+  AlertTriangle, MapPin, Calendar, Package, 
+  PlusCircle, Filter, Search
 } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
@@ -22,10 +22,12 @@ const Disasters = () => {
 
   useEffect(() => {
     fetchDisasters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     filterDisasters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [disasters, searchTerm, filterType, filterSeverity]);
 
   const fetchDisasters = async () => {

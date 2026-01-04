@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Users, Package, TrendingUp, Map, BarChart3, Database, 
+  Users, Package, TrendingUp, Map, BarChart3, 
   Shield, CheckCircle, Eye, Ban, Award, Activity
 } from 'lucide-react';
 import axios from 'axios';

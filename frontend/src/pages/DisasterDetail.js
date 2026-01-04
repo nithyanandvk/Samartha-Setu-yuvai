@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { 
-  AlertTriangle, MapPin, Calendar, Package, Users, 
+  MapPin, Calendar, Package, Users, 
   PlusCircle, ArrowLeft, CheckCircle, Clock
 } from 'lucide-react';
 import axios from 'axios';
@@ -23,6 +22,7 @@ const DisasterDetail = () => {
 
   useEffect(() => {
     fetchDisaster();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const fetchDisaster = async () => {

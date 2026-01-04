@@ -4,7 +4,7 @@
   "description": "Backend for Samartha Setu Platform",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "nodemon server.js",
     "create-indexes": "node scripts/createIndexes.js",
     "seed-fridges": "node scripts/seedFridges.js",

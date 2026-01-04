@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Home, Map, PlusCircle, MessageSquare, Trophy, User, 
+  Home, Map, PlusCircle, Trophy, User, 
   LogOut, Menu, X, Shield, AlertTriangle,  Wheat
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';

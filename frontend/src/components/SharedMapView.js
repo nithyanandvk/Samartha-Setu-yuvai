@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
 import './SharedMapView.css';
 
 // Fix for default marker icons
@@ -15,7 +14,6 @@ L.Icon.Default.mergeOptions({
 });
 
 const SharedMapView = ({ isAdmin = false }) => {
-  const { user } = useAuth();
   const [mapData, setMapData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userLocation, setUserLocation] = useState([20.5937, 78.9629]); // India center
@@ -81,7 +79,7 @@ const SharedMapView = ({ isAdmin = false }) => {
     } finally {
       setLoading(false);
     }
-  }, [filters.listingStatus, filters.showListings, filters.showFridges, isAdmin, API_URL]);
+  }, [filters.listingStatus, isAdmin, API_URL]);
 
   useEffect(() => {
     fetchMapData();
